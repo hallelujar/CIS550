@@ -4,7 +4,6 @@ var connection = mysql.createConnection({
   host     : 'finalprojectcis550.c6wetbpb49dv.us-west-2.rds.amazonaws.com',
   user     : 'team9',
   password : '#reCheM=6eDr',
-  port     : '3306',
   database : 'nbaSQL'
 });
 
@@ -16,14 +15,15 @@ var connection = mysql.createConnection({
 // res = HTTP result object sent back to the client
 // name = Name to query for
 function query_db(res, fullName) {
-	query = "select * from players" ;
+	query = "select * from Player" ;
   //, (SELECT F.count(*) FROM Friends F WHERE P.login = F.login)
   //A.NF from Person, (select login, count(friend) as NF from Friends F group by login) A where Person.login = A.login";
-	if (fullName) query = query + " WHERE fullName='" + fullName + "'";
+	if (fullName) query = query + " WHERE Name='" + fullName + "'";
 	connection.query(query, function(err, rows, fields) {
 		if (err) console.log(err);
 		else {
-			output_persons(res, fullName, results);
+
+			output_persons(res, fullName, rows);
 		}
 	});
 }
@@ -44,5 +44,5 @@ function output_persons(res,fullName,results) {
 /////
 // This is what's called by the main app
 exports.do_work = function(req, res){
-	query_db(res,req.query.fullName);
+	query_db(res,req.query.name);
 };

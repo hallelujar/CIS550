@@ -19,17 +19,15 @@ block content
     table
       - for (var inx = 0; inx < results.length; inx++)
         tr
-          td=results[inx].firstName
+          td=results[inx].Name
           td &nbsp;
-          td=results[inx].lastName
+          td=results[inx].Age
           td &nbsp;
-          td=results[inx].playerId
+          td=results[inx].Height
           td &nbsp;
-          td=results[inx].teamId
+          td=results[inx].Weight
           td &nbsp;
-          td=results[inx].fullName
-          td &nbsp;&nbsp;
-          td=results[inx].downcaseName
+          td=results[inx].Nationality
   // Put a click button that lets us return to the index page
   form(method='get', action='/')
       input(type='submit', value='Return')
