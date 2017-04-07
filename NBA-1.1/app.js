@@ -8,13 +8,6 @@
 var express = require('express')
   , routes = require('./routes')
   , person = require('./routes/person')
-  , country = require('./routes/country')
-  , highest = require('./routes/highest')
-  , coach = require('./routes/coach')
-  , win_percent = require('./routes/win_percent')
-  , average_wh = require('./routes/average_wh')
-  , assists = require('./routes/assists')
-  , most_in_team = require('./routes/most_in_team')
   , http = require('http')
   , path = require('path')
   , stylus = require("stylus")
@@ -30,13 +23,8 @@ init_app(app);
 app.get('/', routes.do_work);
 // when we get a request for {app/person} we should call routes/person.js
 app.get('/person', person.do_work);
-app.get('/country', country.do_work);
-app.get('/highest', highest.do_work);
-app.get('/assists', assists.do_work);
-app.get('/coach', coach.do_work);
-app.get('/average_wh', average_wh.do_work);
-app.get('/win_percent', win_percent.do_work);
-app.get('/most_in_team', most_in_team.do_work);
+
+
 
 // Listen on the port we specify
 http.createServer(app).listen(app.get('port'), function(){
