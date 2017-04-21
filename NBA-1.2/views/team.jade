@@ -1,0 +1,55 @@
+// Jade file to specify output of a persons list
+// Inherits from layout
+extend layout
+
+
+block content
+  h3 Team facts
+  
+  p 
+    +icon-primary("search") 
+    | &nbsp; Coach of :
+
+  form(method='get', action='/coach')
+      h5 team:
+      input(name="title", value='',class="form-control", placeholder="team" style="width:300px")
+      h5 season:
+      input(name="name", value='',class="form-control", placeholder="season" style="width:300px")
+      br
+      <button class="btn btn-default" >Check</button>
+      
+  br
+  br
+  br
+  p
+    +icon-primary("search")
+    | &nbsp; Highest win percent in season :
+
+  form(method='get', action='/win_percent')
+      input(name="title", value='',class="form-control", placeholder="season" style="width:300px")
+      br
+      <button class="btn btn-default" >Check</button>
+
+  br
+  br
+  br
+  
+  p
+    +icon-primary("search")
+    | &nbsp; Most blocks in team :
+
+  form(method='get', action='/most_in_team')
+      h5 team:
+      input(name="title", value='',class="form-control", placeholder="team" style="width:300px")
+      h5 season:
+      input(name="name", value='',class="form-control", placeholder="season" style="width:300px")
+      br
+      <button class="btn btn-default" >Check</button>
+
+      
+  br
+  br
+  br
+  form(method='get', action='/')
+    <button class="btn btn-default" >Return</button>
+  

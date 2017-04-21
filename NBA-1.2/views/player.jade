@@ -1,0 +1,61 @@
+// Jade file to specify output of a persons list
+// Inherits from layout
+extend layout
+
+
+block content
+  h3 Player facts
+  br
+  
+  p
+    +icon-primary("search")
+    | &nbsp; Highest socre of player in season:   
+  form(method='get', action= '/highest')
+    input(name='name', value='', class="form-control", placeholder="season" style="width:300px")
+    br
+    <button class="btn btn-default" >Check</button>
+    
+  br
+  br
+  br
+  
+  p
+    +icon-primary("search")
+    | &nbsp; Number of players in the country:   
+    
+  form(method='get', action= '/country')
+    input(name='name', value='',class="form-control", placeholder="country" style="width:300px")
+    br
+    <button class="btn btn-default" >Check</button>
+  
+  br
+  br
+  br
+  
+  p
+    +icon-primary("search")
+    | &nbsp; 10 players with highest average assists in season:
+
+  form(method='get', action='/assists')
+    input(name='name', value='', class="form-control", placeholder="season" style="width:300px") 
+    br
+    <button class="btn btn-default" >Check</button>
+  
+  
+  br
+  br
+  br
+  p
+    +icon-primary("search")
+    | &nbsp; Average age, height, and weight for the players:
+
+  form(method='get', action='/average_wh')
+    br
+    <button class="btn btn-default" >Check</button>
+  br
+  br
+  br
+  form(method='get', action='/')
+    <button class="btn btn-default" >Return</button>
+  
+  
