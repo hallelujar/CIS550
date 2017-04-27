@@ -12,11 +12,16 @@ block content
   
   p
     
-    table
+          
+    table.table.table-hover
+      thead
+        tr
+          th Coach
+      tbody
       - for (var inx = 0; inx < results.length; inx++)
         tr
           td=results[inx].Coach
-          
+
   // Put a click button that lets us return to the index page
   form(method='get', action='/team')
-      input(type='submit', value='Return')
+      button.btn.btn-default Return

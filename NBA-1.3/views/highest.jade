@@ -10,7 +10,13 @@ block content
   form(method="get", action="/highest")
   p
     
-    table
+    table.table.table-hover
+      thead
+        tr
+          th Name
+          th &nbsp;
+          th PTS
+      tbody
       - for (var inx = 0; inx < results.length; inx++)
         tr
           td=results[inx].Name
@@ -18,5 +24,5 @@ block content
           td=results[inx].PTS
           
   // Put a click button that lets us return to the index page
-  form(method='get', action='/')
-      input(type='submit', value='Return')
+  form(method='get', action='/player')
+      button.btn.btn-default Return

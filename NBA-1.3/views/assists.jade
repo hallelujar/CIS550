@@ -11,14 +11,19 @@ block content
   // Create a table with one row per result
   form(method="get", action="/assists")
   p
-    
-    table
+  table.table.table-hover
+      thead
+        tr
+          th Player Name
+          th &nbsp;
+          th AST
+      tbody
       - for (var inx = 0; inx < results.length; inx++)
         tr
           td=results[inx].Name
           td &nbsp;
           td=results[inx].AST
-          
+
   // Put a click button that lets us return to the index page
-  form(method='get', action='/')
+  form(method='get', action='/player')
       <button class="btn btn-default" >return</button>
