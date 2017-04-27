@@ -15,7 +15,7 @@ var connection = mysql.createConnection({
 // res = HTTP result object sent back to the client
 // name = Name to query for
 function query_db(res, fullName) {
-	query = "select P.Name, SP.PTS from SeasonPerformance SP natural join Player P natural join PlaysFor natural join Season S where S.Start_Year = " + fullName + " and SP.PTS = (select max(PTS) from SeasonPerformance)";
+	query = "select P.Name, SP.PTS from SeasonPerformance SP natural join Player P natural join PlaysFor natural join Season S where where S.Start_Year = " + fullName + " and SP.PTS = (select max(SPS.PTS) from (select PTS from SeasonPerformance natural join Season where Season.Start_Year =" + fullName + ") SPS)";
   //, (SELECT F.count(*) FROM Friends F WHERE P.login = F.login)
   //A.NF from Person, (select login, count(friend) as NF from Friends F group by login) A where Person.login = A.login";
 	//if (fullName) query = query + " WHERE Name='" + fullName + "'";

@@ -16,7 +16,7 @@ var connection = mysql.createConnection({
 // name = Name to query for
 function query_db(res, fullName, year) {
 
-	query = "select T.Name, TP.Win_percent from TeamPerformance TP natural join Team T natural join Season S where S.Start_Year = " + fullName + " and TP.Win_percent = (select max(Win_percent) from TeamPerformance)";
+	query = "select T.Name, TP.Win_percent from TeamPerformance TP natural join Team T natural join Season S where S.Start_Year = " + fullName + " and TP.Win_percent = (select max(TPS.Win_percent) from(select Win_percent from TeamPerformance natural join Season where Season.Start_Year =" + fullName + ") TPS)";
 
   //, (SELECT F.count(*) FROM Friends F WHERE P.login = F.login)
   //A.NF from Person, (select login, count(friend) as NF from Friends F group by login) A where Person.login = A.login";
