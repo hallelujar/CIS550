@@ -15,8 +15,8 @@ var connection = mysql.createConnection({
 // res = HTTP result object sent back to the client
 // name = Name to query for
 function query_db(res, fullName) {
-	query = "select P.Name, S.Start_Year from MVP M natural join Player P natural join Season S order by S.Start_Year desc";
-    if (fullName) query = query + " where S.Start_Year = " + fullName + "";
+	query = "select P.Name, S.Start_Year from MVP M natural join Player P natural join Season S";
+    if (fullName) query = query + " where S.Start_Year = "+fullName+"";
 	connection.query(query, function(err, rows, fields) {
 		if (err) console.log(err);
 		else {
