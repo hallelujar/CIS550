@@ -24,7 +24,6 @@ var express = require('express')
   , reb = require('./routes/reb')
   , three_pointer = require('./routes/three_pointer')
   , most_in_team = require('./routes/most_in_team')
-  , yang = require('./routes/yang')
   , pts = require('./routes/pts')
   , team = require('./routes/team')
   , player = require('./routes/player')
@@ -43,7 +42,6 @@ init_app(app);
 
 // When we get a request for {app}/ we should call routes/index.js
 app.get('/', routes.do_work);
-app.get('/yang', yang.do_work);
 app.get('/player', player.do_work);
 app.get('/team', team.do_work);
 app.get('/loadMonthlyDataPage', loadMonthlyDataPage.do_work)
