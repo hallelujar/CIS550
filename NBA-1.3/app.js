@@ -23,6 +23,8 @@ var express = require('express')
   , yang = require('./routes/yang')
   , team = require('./routes/team')
   , player = require('./routes/player')
+  , loadMonthlyDataPage = require('./routes/loadMonthlyDataPage')
+  , querryMonthlyData = require('./routes/mongoDataQuerry')
   , http = require('http')
   , path = require('path')
   , stylus = require("stylus")
@@ -39,6 +41,8 @@ app.get('/', routes.do_work);
 app.get('/yang', yang.do_work);
 app.get('/player', player.do_work);
 app.get('/team', team.do_work);
+app.get('/loadMonthlyDataPage', loadMonthlyDataPage.do_work)
+app.get('/monthlyPlayerData/:mtype',querryMonthlyData.do_work)
 // when we get a request for {app/person} we should call routes/person.js
 app.get('/person', person.do_work);
 app.get('/country', country.do_work);
