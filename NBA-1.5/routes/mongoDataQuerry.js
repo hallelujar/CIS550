@@ -17,7 +17,7 @@ var getTopMonthlyStats = function(stat, month,callback) {
 	col.aggregate([{$unwind:"$result"},
 									{$sort:sortvar},
 									{$match:matchvar},
-									{$limit:5},
+									{$limit:10},
 									{$project:projectvar}],function(err,result){
 										if(err) console.log(err);
 										else {
