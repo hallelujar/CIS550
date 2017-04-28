@@ -9,6 +9,18 @@ block content
   
   p
     +icon-primary("search")
+    | &nbsp; Player Information:   
+  form(method='get', action= '/person')
+    input(name='name', value='', class="form-control", placeholder="player name" style="width:300px")
+    br
+    button.btn.btn-default Check
+    
+  br
+  br
+  br
+  
+  p
+    +icon-primary("search")
     | &nbsp; Highest socre of player in season:   
   form(method='get', action= '/highest')
     input(name='name', value='', class="form-control", placeholder="season" style="width:300px")

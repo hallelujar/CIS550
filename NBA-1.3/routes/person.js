@@ -18,7 +18,7 @@ function query_db(res, fullName) {
 	query = "select * from Player" ;
   //, (SELECT F.count(*) FROM Friends F WHERE P.login = F.login)
   //A.NF from Person, (select login, count(friend) as NF from Friends F group by login) A where Person.login = A.login";
-	if (fullName) query = query + " WHERE Name='" + fullName + "'";
+	if (fullName) query = query + " where Name like '%"+fullName+"%'";
 	connection.query(query, function(err, rows, fields) {
 		if (err) console.log(err);
 		else {
