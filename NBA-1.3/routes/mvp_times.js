@@ -15,7 +15,7 @@ var connection = mysql.createConnection({
 // res = HTTP result object sent back to the client
 // name = Name to query for
 function query_db(res, fullName) {
-	query = "select P.Name, count(M.Player_ID) num_MVP from MVP M left join Player P on M.Player_ID = P.Player_ID where P.Name like '%"+fullName+"%' group by M.Player_ID";
+	query = "select P.Name, count(M.Player_ID) num_MVP from Player P left join MVP M on M.Player_ID = P.Player_ID where P.Name like '%"+fullName+"%' group by M.Player_ID";
 
   //, (SELECT F.count(*) FROM Friends F WHERE P.login = F.login)
   //A.NF from Person, (select login, count(friend) as NF from Friends F group by login) A where Person.login = A.login";
