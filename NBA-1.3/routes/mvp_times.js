@@ -15,7 +15,8 @@ var connection = mysql.createConnection({
 // res = HTTP result object sent back to the client
 // name = Name to query for
 function query_db(res, fullName) {
-	query = "select P.Name, SP.PTS from SeasonPerformance SP natural join Player P natural join PlaysFor natural join Season S where S.Start_Year = " + fullName + " and SP.PTS = (select max(SPS.PTS) from (select PTS from SeasonPerformance natural join Season where Season.Start_Year =" + fullName + ") SPS)";
+	query = "select P.Name, count(M.Player_ID) num_MVP from MVP M left join Player P on M.Player_ID = P.Player_ID where P.Name like '%"+fullName+"%' group by M.Player_ID";
+
   //, (SELECT F.count(*) FROM Friends F WHERE P.login = F.login)
   //A.NF from Person, (select login, count(friend) as NF from Friends F group by login) A where Person.login = A.login";
 	//if (fullName) query = query + " WHERE Name='" + fullName + "'";
@@ -35,8 +36,8 @@ function query_db(res, fullName) {
 // name = Name to query for
 // results = List object of query results
 function output_personss(res,fullName,results) {
-	res.render('highest.jade',
-		   { title: "Player with highest " + fullName,
+	res.render('mvp_times.jade',
+		   { title: "This player won how many times of MVP awards " + fullName,
 		     results: results }
 	  );
 }

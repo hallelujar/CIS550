@@ -21,10 +21,34 @@ block content
   
   p
     +icon-primary("search")
+    | &nbsp; MVP in season:   
+  form(method='get', action= '/mvp_season')
+    input(name='name', value='', class="form-control", placeholder="season" style="width:300px")
+    br
+    button.btn.btn-default Check
+    
+  br
+  br
+  br
+  
+  p
+    +icon-primary("search")
+    | &nbsp; Player won how many times of MVP awards since 1980:   
+  form(method='get', action= '/mvp_times')
+    input(name='name', value='', class="form-control", placeholder="player name" style="width:300px")
+    br
+    button.btn.btn-default Check
+    
+  br
+  br
+  br
+  
+  p
+    +icon-primary("search")
     | &nbsp; Number of players in the country:   
     
   form(method='get', action= '/country')
-    input(name='name', value='',class="form-control", placeholder="country" style="width:300px")
+    input(name='name', value='',class="form-control", placeholder="Country" style="width:300px")
     br
     button.btn.btn-default Check
   
@@ -45,6 +69,18 @@ block content
   br
   br
   br
+  
+  p
+    +icon-primary("search")
+    | &nbsp; Player who won most MVP awards since 1980:
+
+  form(method='get', action='/most_mvp')
+    br
+    button.btn.btn-default Check
+  br
+  br
+  br
+  
   p
     +icon-primary("search")
     | &nbsp; Average age, height, and weight for the players:

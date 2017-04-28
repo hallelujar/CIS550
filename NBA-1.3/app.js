@@ -9,9 +9,14 @@ var express = require('express')
   , routes = require('./routes')
   , person = require('./routes/person')
   , country = require('./routes/country')
+  , mvp_season = require('./routes/mvp_season')
+  , mvp_times = require('./routes/mvp_times')
   , highest = require('./routes/highest')
   , coach = require('./routes/coach')
+  , champion = require('./routes/champion')
+  , final_game = require('./routes/final_game')
   , win_percent = require('./routes/win_percent')
+  , most_mvp = require('./routes/most_mvp')
   , average_wh = require('./routes/average_wh')
   , assists = require('./routes/assists')
   , most_in_team = require('./routes/most_in_team')
@@ -37,9 +42,14 @@ app.get('/team', team.do_work);
 // when we get a request for {app/person} we should call routes/person.js
 app.get('/person', person.do_work);
 app.get('/country', country.do_work);
+app.get('/mvp_season', mvp_season.do_work);
+app.get('/mvp_times', mvp_times.do_work);
 app.get('/highest', highest.do_work);
 app.get('/assists', assists.do_work);
 app.get('/coach', coach.do_work);
+app.get('/champion', champion.do_work);
+app.get('/final_game', final_game.do_work);
+app.get('/most_mvp', most_mvp.do_work);
 app.get('/average_wh', average_wh.do_work);
 app.get('/win_percent', win_percent.do_work);
 app.get('/most_in_team', most_in_team.do_work);

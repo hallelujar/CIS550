@@ -17,15 +17,37 @@ block content
       input(name="name", value='',class="form-control", placeholder="season" style="width:300px")
       br
       button.btn.btn-default Check
-      
-  
-  
-  
-  
-      
+           
   br
   br
   br
+  
+  p
+    +icon-primary("search")
+    | &nbsp; Champion in season :
+
+  form(method='get', action='/champion')
+      input(name="title", value='',class="form-control", placeholder="season" style="width:300px")
+      br
+      button.btn.btn-default Check
+
+  br
+  br
+  br
+  
+  p
+    +icon-primary("search")
+    | &nbsp; Teams in final game in season :
+
+  form(method='get', action='/final_game')
+      input(name="title", value='',class="form-control", placeholder="season" style="width:300px")
+      br
+      button.btn.btn-default Check
+
+  br
+  br
+  br
+  
   p
     +icon-primary("search")
     | &nbsp; Highest win percent in season :

@@ -14,8 +14,9 @@ var connection = mysql.createConnection({
 //
 // res = HTTP result object sent back to the client
 // name = Name to query for
-function query_db(res, fullName) {
-	query = "select P.Name, SP.PTS from SeasonPerformance SP natural join Player P natural join PlaysFor natural join Season S where S.Start_Year = " + fullName + " and SP.PTS = (select max(SPS.PTS) from (select PTS from SeasonPerformance natural join Season where Season.Start_Year =" + fullName + ") SPS)";
+function query_db(res, fullName, year) {
+	query = "select T.Name, S.Start_Year from Season S, Champion C, Team T where S.Season_ID = C.Season_ID and C.Champion_Team_ID=T.Team_ID";
+    if (fullName) query = query + " and S.Start_Year = " + fullName + "";
   //, (SELECT F.count(*) FROM Friends F WHERE P.login = F.login)
   //A.NF from Person, (select login, count(friend) as NF from Friends F group by login) A where Person.login = A.login";
 	//if (fullName) query = query + " WHERE Name='" + fullName + "'";
@@ -23,7 +24,7 @@ function query_db(res, fullName) {
 		if (err) console.log(err);
 		else {
 
-			output_personss(res, fullName, rows);
+			output_persons(res, fullName, rows);
 		}
 	});
 }
@@ -34,15 +35,15 @@ function query_db(res, fullName) {
 // res = HTTP result object sent back to the client
 // name = Name to query for
 // results = List object of query results
-function output_personss(res,fullName,results) {
-	res.render('highest.jade',
-		   { title: "Player with highest " + fullName,
+function output_persons(res,fullName,results) {
+	res.render('champion.jade',
+		   { title: "Champion in " + fullName,
 		     results: results }
 	  );
 }
 
 /////
 // This is what's called by the main app
-exports.do_work = function(req, res){
-	query_db(res,req.query.name);
+exports.do_work = function(req1, res){
+	query_db(res,req1.query.title, req1.query.name);
 };
